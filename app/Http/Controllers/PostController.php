@@ -14,10 +14,10 @@ class PostController extends Controller
         ]); 
     }
 
-    public static function singlePost($slug) {
+    public static function singlePost(Post $post) {
         return view('post', [
             "title" => "Single Post",
-            "single_post" => Post::find($slug)
+            "single_post" => $post
         ]);
     }
 }

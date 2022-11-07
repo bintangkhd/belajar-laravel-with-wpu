@@ -6,3 +6,4 @@
     <p>{{ $desc }}</p>
     <img src="img/{{ $image }}" alt="Foto {{ $name }}" width="250" class="img-thumbnail">
 @endsection
+
