@@ -10,7 +10,8 @@ class PostController extends Controller
     public function index() {
         return view('posts', [
             "title" => "All Posts",
-            "posts" => Post::with(['user', 'category'])->latest()->get() //Eager Load untuk mengatasi N+1 Problem menggunakan 'with()'
+            // "posts" => Post::with(['user', 'category'])->latest()->get() //Eager Load untuk mengatasi N+1 Problem menggunakan 'with()'
+            "posts" => Post::latest()->get()
         ]); 
     }
 
@@ -20,4 +21,5 @@ class PostController extends Controller
             "post" => $post
         ]);
     }
+    
 }

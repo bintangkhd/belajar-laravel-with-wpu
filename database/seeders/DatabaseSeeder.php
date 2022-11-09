@@ -43,11 +43,16 @@ class DatabaseSeeder extends Seeder
         ]);
         
         Category::create([
+            'name' => 'UI UX Design',
+            'slug' => 'ui-ux-design'
+        ]);
+        
+        Category::create([
             'name' => 'Life and Style',
             'slug' => 'life-and-style'
         ]);
 
-        Post::factory(20)->create();
+        Post::factory(30)->create();
 
         // Post::create([
         //     'title' => 'Judul Post Pertama',
