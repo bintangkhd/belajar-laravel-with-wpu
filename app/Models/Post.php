@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Category;
+
 class Post extends Model
 {
     use HasFactory;
@@ -28,5 +30,36 @@ class Post extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeFilter($query, array $filters) {
+        
+        // if (isset($filters['search']) ? $filters['search'] : false) {
+        //     return $query->where('title', 'like', '%' . $filters['search'] . '%')
+        //             ->orWhere('body', 'like', '%' . $filters['search'] . '%');
+            
+        // }
+
+        // Di ganti menjadi when method untuk pengkondisian dan null coalesing operator (??) untuk pengecekan isset
+        
+
+        $query->when($filters['search'] ?? false, function($query, $search) {
+            return $query->where(function($query) use ($search) {
+                $query->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('body', 'like', '%' . $search . '%');
+            });
+        });
+
+        $query->when($filters['category'] ?? false, function($query, $category){
+            return $query->whereHas('category', function($query) use ($category) {
+                $query->where('slug', $category);
+            });
+        });
+
+        $query->when($filters['user'] ?? false, fn($query, $author) =>
+            $query->whereHas('user', fn($query) =>
+                $query->where('username', $author)
+            )
+        );
+    }
     
-}
+} 

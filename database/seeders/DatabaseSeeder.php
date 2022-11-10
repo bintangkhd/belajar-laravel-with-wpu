@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'life-and-style'
         ]);
 
-        Post::factory(30)->create();
+        Post::factory(50)->create();
 
         // Post::create([
         //     'title' => 'Judul Post Pertama',

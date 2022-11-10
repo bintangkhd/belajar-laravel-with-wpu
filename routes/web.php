@@ -48,19 +48,19 @@ Route::get('/categories', function() {
 });
 
 
-//Category Routes
-Route::get('/categories/{category:slug}', function(Category $category) {
-    return view('posts', [
-        'title' => "Post by Category : $category->name",
-        'posts' => $category->posts->load('user', 'category'),
-        // 'category' => $category->name
-    ]);
-});
+// //Category Routes
+// Route::get('/categories/{category:slug}', function(Category $category) {
+//     return view('posts', [
+//         'title' => "Post by Category : $category->name",
+//         'posts' => $category->posts->load('user', 'category'),
+//         // 'category' => $category->name
+//     ]);
+// });
 
-//Author Routes
-Route::get('/authors/{user:username}', function(User $user) {
-    return view('posts', [
-        'title' => "Post by Author : $user->name",
-        'posts' => $user->posts->load('user', 'category') //Lazy Eager Load untuk mengatasi N+1 Problem menggunakan 'load()'
-    ]);
-});
+// //Author Routes
+// Route::get('/authors/{user:username}', function(User $user) {
+//     return view('posts', [
+//         'title' => "Post by Author : $user->name",
+//         'posts' => $user->posts->load('user', 'category') //Lazy Eager Load untuk mengatasi N+1 Problem menggunakan 'load()'
+//     ]);
+// });
