@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Category;
 
+use Cviebrock\EloquentSluggable\Sluggable;
+
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     // $fillable yang ada didalamnya yang bisa di isi satu satu, atribut selain itu ga boleh di isi
     
@@ -67,4 +69,13 @@ class Post extends Model
         return 'slug';
     }
     
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
 } 

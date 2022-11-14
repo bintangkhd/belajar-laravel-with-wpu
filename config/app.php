@@ -211,5 +211,9 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
+    
 
+    'slug' => [
+        Cviebrock\EloquentSluggable\Services\SlugService::class,
+    ]
 ];
