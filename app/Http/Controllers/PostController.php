@@ -30,7 +30,7 @@ class PostController extends Controller
         ]); 
     }
 
-    public static function singlePost(Post $post) {
+    public static function show(Post $post) {
         return view('post', [
             "title" => "Single Post",
             "post" => $post
