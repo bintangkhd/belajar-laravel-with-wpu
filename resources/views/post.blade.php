@@ -11,7 +11,13 @@
                     in <a href="/posts?category={{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a> | {{ $post->created_at->diffForHumans() }}
                 </h6>
                 
-                <img src="https://source.unsplash.com/1200x600?{{ $post->category->name }}" alt="{{ $post->slug }}" class="img-fluid">
+                @if ($post->image)
+                    <div style="max-height: 350px; overflow: hidden;">
+                        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->slug }}" class="img-fluid">
+                    </div>
+                @else
+                    <img src="https://source.unsplash.com/1200x600?{{ $post->category->name }}" alt="{{ $post->slug }}" class="img-fluid">
+                @endif
                 
                 <article class="my-3 fs-5">
                     {!! $post->body !!}
@@ -21,6 +27,5 @@
             </div>
         </div>
     </div>
-
 
 @endsection
