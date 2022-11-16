@@ -27,7 +27,7 @@
         {{-- Main Card Post --}}
         <div class="card mb-3">
             @if ($posts[0]->image)
-                    <div style="max-height: 350px; overflow: hidden;">
+                    <div style="max-height: 350px; max-width:1200px; overflow: hidden;" class="mx-auto">
                         <img src="{{ asset('storage/' . $posts[0]->image) }}" alt="{{ $posts[0]->slug }}" class="img-fluid">
                     </div>
             @else
